@@ -12,5 +12,5 @@ public interface AbitanteDAO extends IBaseDAO<Abitante> {
 	public List<Abitante> findAllByCognome(String cognome) throws Exception;
 
 	public List<Abitante> findAllByCodiceMunicipioIniziaCon(String codice) throws Exception;
-	
+		
 }

@@ -12,5 +12,5 @@ public interface MunicipioDAO extends IBaseDAO<Municipio> {
 	public List<Municipio> findAllByAbitantiMinorenni() throws Exception;
 
 	public List<Municipio> findAllByDescrizioneIniziaCon(String iniziale) throws Exception;
-
+	
 }

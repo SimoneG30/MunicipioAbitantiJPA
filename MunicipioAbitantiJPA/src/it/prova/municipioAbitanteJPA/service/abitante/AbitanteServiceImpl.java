@@ -145,4 +145,42 @@ public class AbitanteServiceImpl implements AbitanteService {
 		}
 	}
 
+	@Override
+	public List<Abitante> cercaTuttiGliAbitantiConCognome(String cognome) throws Exception {
+		// questo è come una connection
+				EntityManager entityManager = EntityManagerUtil.getEntityManager();
+
+				try {
+					// uso l'injection per il dao
+					abitanteDAO.setEntityManager(entityManager);
+
+					// eseguo quello che realmente devo fare
+					return abitanteDAO.findAllByCognome(cognome);
+				} catch (Exception e) {
+					e.printStackTrace();
+					throw e;
+				} finally {
+					entityManager.close();
+				}
+			}
+
+	@Override
+	public List<Abitante> cercaTuttiGliAbitantiConCodiceMunicipioIniziaPer(String codice) throws Exception {
+		// questo è come una connection
+		EntityManager entityManager = EntityManagerUtil.getEntityManager();
+
+		try {
+			// uso l'injection per il dao
+			abitanteDAO.setEntityManager(entityManager);
+
+			// eseguo quello che realmente devo fare
+			return abitanteDAO.findAllByCodiceMunicipioIniziaCon(codice);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			entityManager.close();
+		}
+	}
+
 }

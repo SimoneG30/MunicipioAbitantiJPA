@@ -166,4 +166,24 @@ public class MunicipioServiceImpl implements MunicipioService {
 		}
 	}
 
+	@Override
+	public List<Municipio> cercaTuttiIMunicipiConDescrizioneCheIniziaCon(String iniziale) throws Exception {
+		// questo è come una connection
+				EntityManager entityManager = EntityManagerUtil.getEntityManager();
+
+				try {
+					// uso l'injection per il dao
+					municipioDAO.setEntityManager(entityManager);
+
+					// eseguo quello che realmente devo fare
+					return municipioDAO.findAllByDescrizioneIniziaCon(iniziale);
+
+				} catch (Exception e) {
+					e.printStackTrace();
+					throw e;
+				} finally {
+					entityManager.close();
+				}
+			}
+
 }
